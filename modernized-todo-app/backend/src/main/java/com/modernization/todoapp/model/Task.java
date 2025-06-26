@@ -32,7 +32,6 @@ public class Task {
     private String description;
 
     @NotNull
-    @Future
     private LocalDate endDate;
 
     @ManyToOne
@@ -52,13 +51,11 @@ public class Task {
     private Integer priority;
 
     @NotBlank
-    @Column(length = 10)
+    @Column(length = 20)
     private String status;
 
-    @NotNull
     private LocalDateTime creationDateTime;
 
-    @NotNull
     private LocalDateTime updateDateTime;
 
     @PrePersist
