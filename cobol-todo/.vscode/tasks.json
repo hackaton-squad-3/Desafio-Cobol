@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build COBOL App (Docker)",
+            "type": "shell",
+            "command": "docker build -t cobol-todo .",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run COBOL App (Docker)",
+            "type": "shell",
+            "command": "docker run --rm -it cobol-todo",
+            "group": "test",
+            "problemMatcher": []
+        }
+    ]
+}
