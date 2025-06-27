@@ -13,6 +13,7 @@ import UserList from './components/pages/UserList';
 import UserForm from './components/pages/UserForm';
 import TaskList from './components/pages/TaskList';
 import TaskForm from './components/pages/TaskForm';
+import TasksByUser from './components/pages/TasksByUser';
 import NotFound from './components/pages/NotFound';
 
 const theme = createTheme({
@@ -53,6 +54,7 @@ function App() {
               <Route path="/tasks" element={<TaskList />} />
               <Route path="/tasks/new" element={<TaskForm />} />
               <Route path="/tasks/edit/:id" element={<TaskForm />} />
+              <Route path="/tasks/by-user" element={<TasksByUser />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
