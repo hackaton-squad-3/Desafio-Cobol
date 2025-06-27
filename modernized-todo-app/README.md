@@ -1,136 +1,218 @@
-# Modernized Todo Application
+<div align="center">
 
-This project is a modernized version of a COBOL Todo Application, migrated to a Java Spring Boot backend with a React frontend.
+# ⚡ **Modernized Todo Application** ⚡
 
-## Project Structure
+<img src="https://img.shields.io/badge/Status-Active-gold?style=for-the-badge&logo=checkmarx&logoColor=white&labelColor=black" alt="Status">
+<img src="https://img.shields.io/badge/Java-17-gold?style=for-the-badge&logo=openjdk&logoColor=white&labelColor=black" alt="Java">
+<img src="https://img.shields.io/badge/React-18-gold?style=for-the-badge&logo=react&logoColor=white&labelColor=black" alt="React">
+<img src="https://img.shields.io/badge/Spring_Boot-3.x-gold?style=for-the-badge&logo=springboot&logoColor=white&labelColor=black" alt="Spring Boot">
 
-The project is divided into two main parts:
+### 🚀 **Uma aplicação Todo moderna migrada de COBOL para Java Spring Boot + React**
 
-### Backend (Spring Boot)
+---
 
-- Java 17
-- Spring Boot 3.x
-- Spring Data JPA
-- Spring Security
-- RESTful APIs
-- H2 Database (for development)
+</div>
 
-### Frontend (React)
+## 📋 **Visão Geral**
 
-- React 18
-- Material-UI components
-- React Router for navigation
-- Axios for API communication
-- Date-fns for date manipulation
+> **Transformação Digital Completa**: Este projeto representa a modernização de uma aplicação COBOL legada para uma arquitetura moderna full-stack, demonstrando as melhores práticas de migração e desenvolvimento.
 
-## Features
+<table>
+<tr>
+<td width="50%">
 
-- User Management (CRUD operations)
-  - Create, list, update, and delete users
-  - Validation for user data (first name, last name, birth date)
-  - Age validation (users must be at least 18 years old)
+### 🔧 **Backend (Spring Boot)**
+- ☕ **Java 17** - Linguagem robusta
+- 🍃 **Spring Boot 3.x** - Framework moderno
+- 🗄️ **Spring Data JPA** - Persistência
+- 🔐 **Spring Security** - Segurança
+- 🌐 **RESTful APIs** - Comunicação
+- 💾 **H2 Database** - Desenvolvimento
 
-- Task Management (CRUD operations)
-  - Create, list, update, and delete tasks
-  - Assign tasks to users
-  - Set task priorities
-  - Track task status
-  - Tag tasks for categorization
+</td>
+<td width="50%">
 
-- Dashboard
-  - Overview of users and tasks
-  - Quick access to recent tasks
+### ⚛️ **Frontend (React)**
+- ⚛️ **React 18** - Interface moderna
+- 🎨 **Material-UI** - Componentes elegantes
+- 🧭 **React Router** - Navegação
+- 📡 **Axios** - Comunicação HTTP
+- 📅 **Date-fns** - Manipulação de datas
 
-## Getting Started
+</td>
+</tr>
+</table>
 
-### Prerequisites
+---
 
-- Java 17 or higher
-- Node.js and npm
-- Maven
+## ✨ **Funcionalidades Principais**
 
-### Running the Backend
+<div align="center">
 
-1. Navigate to the backend directory:
-   ```
-   cd modernized-todo-app/backend
-   ```
+| 👥 **Gerenciamento de Usuários** | 📝 **Gerenciamento de Tarefas** | 📊 **Dashboard** |
+|:---:|:---:|:---:|
+| ✅ Criar, listar, atualizar e deletar | ✅ CRUD completo de tarefas | ✅ Visão geral de usuários |
+| ✅ Validação de dados completa | ✅ Atribuição de tarefas | ✅ Acesso rápido a tarefas |
+| ✅ Validação de idade (18+) | ✅ Sistema de prioridades | ✅ Estatísticas em tempo real |
+| ✅ Campos obrigatórios | ✅ Controle de status | ✅ Interface intuitiva |
 
-2. Build the project with Maven:
-   ```
-   mvn clean install
-   ```
+</div>
 
-3. Run the Spring Boot application:
-   ```
-   mvn spring-boot:run
-   ```
+---
 
-The backend will start on http://localhost:8080
+## 🚀 **Início Rápido**
 
-### Running the Frontend
+### 📋 **Pré-requisitos**
 
-1. Navigate to the frontend directory:
-   ```
-   cd modernized-todo-app/frontend
-   ```
+```bash
+☕ Java 17+    📦 Node.js & npm    🔨 Maven
+```
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
+### 🔧 **Executando o Backend**
 
-3. Start the development server:
-   ```
-   npm start
-   ```
+```bash
+# 📁 Navegar para o diretório backend
+cd modernized-todo-app/backend
 
-The frontend will start on http://localhost:3000
+# 🔨 Build do projeto
+mvn clean install
 
-## API Endpoints
+# 🚀 Executar aplicação
+mvn spring-boot:run
+```
 
-### Users
-- `GET /api/users` - Get all users
-- `GET /api/users/{id}` - Get a specific user
-- `POST /api/users` - Create a new user
-- `PUT /api/users/{id}` - Update a user
-- `DELETE /api/users/{id}` - Delete a user
+<div align="center">
+<img src="https://img.shields.io/badge/Backend_Running-http://localhost:8080-gold?style=for-the-badge&logo=spring&logoColor=white&labelColor=black" alt="Backend">
+</div>
 
-### Tasks
-- `GET /api/tasks` - Get all tasks
-- `GET /api/tasks/{id}` - Get a specific task
-- `GET /api/tasks/user/{userId}` - Get tasks assigned to a user
-- `GET /api/tasks/tag/{tag}` - Get tasks with a specific tag
-- `POST /api/tasks` - Create a new task
-- `PUT /api/tasks/{id}` - Update a task
-- `PATCH /api/tasks/{id}/status` - Update a task's status
-- `DELETE /api/tasks/{id}` - Delete a task
+### ⚛️ **Executando o Frontend**
 
-## Architecture
+```bash
+# 📁 Navegar para o diretório frontend
+cd modernized-todo-app/frontend
 
-This project follows a standard layered architecture:
+# 📦 Instalar dependências
+npm install
 
-1. **Frontend Layer**: React components and services
-2. **API Layer**: Spring Boot REST controllers
-3. **Service Layer**: Business logic implementation
-4. **Repository Layer**: Data access using Spring Data JPA
-5. **Database**: H2 in-memory database (can be replaced with PostgreSQL or MySQL)
+# 🚀 Iniciar servidor de desenvolvimento
+npm start
+```
 
-## Migration Notes
+<div align="center">
+<img src="https://img.shields.io/badge/Frontend_Running-http://localhost:3000-gold?style=for-the-badge&logo=react&logoColor=white&labelColor=black" alt="Frontend">
+</div>
 
-This application was migrated from a COBOL application with the following changes:
+---
 
-- Replaced in-memory arrays with a relational database
-- Converted procedural COBOL code to object-oriented Java
-- Added a modern React frontend with Material-UI components
-- Implemented RESTful API for communication between frontend and backend
-- Enhanced validation and error handling
-- Added proper date handling and formatting
+## 🛠️ **API Endpoints**
 
-## Future Improvements
+<details>
+<summary><b>👥 Usuários</b></summary>
 
-- Add authentication and authorization
-- Implement pagination for large datasets
-- Add search functionality
-- Create mobile app using React Native
-- Implement email notifications for task deadlines
+| Método | Endpoint | Descrição |
+|:---:|:---|:---|
+| `GET` | `/api/users` | Listar todos os usuários |
+| `GET` | `/api/users/{id}` | Buscar usuário específico |
+| `POST` | `/api/users` | Criar novo usuário |
+| `PUT` | `/api/users/{id}` | Atualizar usuário |
+| `DELETE` | `/api/users/{id}` | Deletar usuário |
+
+</details>
+
+<details>
+<summary><b>📝 Tarefas</b></summary>
+
+| Método | Endpoint | Descrição |
+|:---:|:---|:---|
+| `GET` | `/api/tasks` | Listar todas as tarefas |
+| `GET` | `/api/tasks/{id}` | Buscar tarefa específica |
+| `GET` | `/api/tasks/user/{userId}` | Tarefas de um usuário |
+| `GET` | `/api/tasks/tag/{tag}` | Tarefas por tag |
+| `POST` | `/api/tasks` | Criar nova tarefa |
+| `PUT` | `/api/tasks/{id}` | Atualizar tarefa |
+| `PATCH` | `/api/tasks/{id}/status` | Atualizar status |
+| `DELETE` | `/api/tasks/{id}` | Deletar tarefa |
+
+</details>
+
+---
+
+## 🏗️ **Arquitetura**
+
+<div align="center">
+
+```mermaid
+graph TD
+    A[🌐 Frontend - React] --> B[📡 API Layer - Spring Boot]
+    B --> C[⚙️ Service Layer - Business Logic]
+    C --> D[🗄️ Repository Layer - Spring Data JPA]
+    D --> E[💾 Database - H2/PostgreSQL]
+    
+    style A fill:#FFD700,stroke:#000,stroke-width:2px,color:#000
+    style B fill:#000,stroke:#FFD700,stroke-width:2px,color:#FFD700
+    style C fill:#FFD700,stroke:#000,stroke-width:2px,color:#000
+    style D fill:#000,stroke:#FFD700,stroke-width:2px,color:#FFD700
+    style E fill:#FFD700,stroke:#000,stroke-width:2px,color:#000
+```
+
+</div>
+
+---
+
+## 🔄 **Migração COBOL → Java**
+
+<table>
+<tr>
+<th width="50%">🏛️ <b>COBOL Legacy</b></th>
+<th width="50%">🚀 <b>Java Modern</b></th>
+</tr>
+<tr>
+<td>
+
+- Arrays em memória
+- Código procedural
+- Interface de linha de comando
+- Validação básica
+- Manipulação manual de dados
+
+</td>
+<td>
+
+- ✅ Banco de dados relacional
+- ✅ Programação orientada a objetos
+- ✅ Interface React moderna
+- ✅ API RESTful
+- ✅ Validação robusta
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🎯 **Próximos Passos**
+
+<div align="center">
+
+| 🔐 **Segurança** | 📱 **Mobile** | 🔍 **Funcionalidades** |
+|:---:|:---:|:---:|
+| Autenticação JWT | React Native App | Sistema de busca |
+| Autorização RBAC | PWA Support | Paginação avançada |
+| OAuth2 Integration | Offline Mode | Notificações email |
+
+</div>
+
+---
+
+<div align="center">
+
+### 🌟 **Desenvolvido com ❤️ para o Hackathon Compass UOL** 🌟
+
+<img src="https://img.shields.io/badge/Made_with-❤️-gold?style=for-the-badge&labelColor=black" alt="Made with Love">
+<img src="https://img.shields.io/badge/Hackathon-Compass_UOL-gold?style=for-the-badge&labelColor=black" alt="Hackathon">
+
+---
+
+**⭐ Se este projeto foi útil, considere dar uma estrela!**
+
+</div>
