@@ -135,9 +135,10 @@ function UserForm() {
         navigate('/users');
       }, 1500);
     } catch (err) {
+      const errorMessage = err.response?.data?.error || (isEditMode ? 'Error updating user' : 'Error creating user');
       setSnackbar({
         open: true,
-        message: isEditMode ? 'Error updating user' : 'Error creating user',
+        message: errorMessage,
         severity: 'error'
       });
       console.error('Error saving user:', err);

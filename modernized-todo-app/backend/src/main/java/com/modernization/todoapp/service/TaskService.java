@@ -131,7 +131,7 @@ public class TaskService {
 
         // Check if end date is in the future
         if (task.getEndDate().isBefore(LocalDate.now())) {
-            throw new ValidationException("End date must be in the future");
+            throw new ValidationException("Please enter a valid date from today onwards");
         }
 
         if (task.getCreator() == null) {

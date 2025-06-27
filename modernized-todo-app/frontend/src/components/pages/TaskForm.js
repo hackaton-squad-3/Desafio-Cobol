@@ -89,7 +89,8 @@ const TaskForm = () => {
       }
       navigate('/tasks');
     } catch (err) {
-      setError('Failed to save task');
+      const errorMessage = err.response?.data?.error || 'Failed to save task';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
