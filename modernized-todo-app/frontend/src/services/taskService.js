@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../config/axios';
 
 const API_URL = '/api/tasks';
 
@@ -12,7 +12,7 @@ const taskService = {
    */
   getAllTasks: async () => {
     try {
-      const response = await axios.get(API_URL);
+      const response = await axiosInstance.get(API_URL);
       return response.data;
     } catch (error) {
       console.error('Error fetching tasks:', error);
@@ -27,7 +27,7 @@ const taskService = {
    */
   getTaskById: async (id) => {
     try {
-      const response = await axios.get(`${API_URL}/${id}`);
+      const response = await axiosInstance.get(`${API_URL}/${id}`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching task ${id}:`, error);
@@ -42,7 +42,7 @@ const taskService = {
    */
   getTasksByUser: async (userId) => {
     try {
-      const response = await axios.get(`${API_URL}/user/${userId}`);
+      const response = await axiosInstance.get(`${API_URL}/user/${userId}`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching tasks for user ${userId}:`, error);
@@ -57,7 +57,7 @@ const taskService = {
    */
   getTasksByTag: async (tag) => {
     try {
-      const response = await axios.get(`${API_URL}/tag/${tag}`);
+      const response = await axiosInstance.get(`${API_URL}/tag/${tag}`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching tasks with tag ${tag}:`, error);
@@ -72,7 +72,7 @@ const taskService = {
    */
   createTask: async (taskData) => {
     try {
-      const response = await axios.post(API_URL, taskData);
+      const response = await axiosInstance.post(API_URL, taskData);
       return response.data;
     } catch (error) {
       console.error('Error creating task:', error);
@@ -88,7 +88,7 @@ const taskService = {
    */
   updateTask: async (id, taskData) => {
     try {
-      const response = await axios.put(`${API_URL}/${id}`, taskData);
+      const response = await axiosInstance.put(`${API_URL}/${id}`, taskData);
       return response.data;
     } catch (error) {
       console.error(`Error updating task ${id}:`, error);
@@ -104,7 +104,7 @@ const taskService = {
    */
   updateTaskStatus: async (id, status) => {
     try {
-      const response = await axios.patch(`${API_URL}/${id}/status`, { status });
+      const response = await axiosInstance.patch(`${API_URL}/${id}/status`, { status });
       return response.data;
     } catch (error) {
       console.error(`Error updating status for task ${id}:`, error);
@@ -119,7 +119,7 @@ const taskService = {
    */
   deleteTask: async (id) => {
     try {
-      const response = await axios.delete(`${API_URL}/${id}`);
+      const response = await axiosInstance.delete(`${API_URL}/${id}`);
       return response.data;
     } catch (error) {
       console.error(`Error deleting task ${id}:`, error);
