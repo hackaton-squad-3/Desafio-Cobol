@@ -93,36 +93,48 @@ function Dashboard() {
 
   return (
     <Box sx={{ mt: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom>
+      <Typography 
+        variant="h4" 
+        component="h1" 
+        gutterBottom
+        sx={{ 
+          borderBottom: '3px solid #ffbf00', 
+          paddingBottom: 2, 
+          marginBottom: 4,
+          fontWeight: 600 
+        }}
+      >
         Dashboard
       </Typography>
       
       {/* Summary Cards */}
       <Grid container spacing={3} sx={{ mb: 4 }}>
         <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Box display="flex" alignItems="center">
-                <PersonIcon sx={{ fontSize: 40, mr: 2, color: 'primary.main' }} />
-                <Typography variant="h5" component="div">
+          <Card sx={{ minHeight: '200px', display: 'flex', flexDirection: 'column' }}>
+            <CardContent sx={{ flex: 1, p: 3 }}>
+              <Box display="flex" alignItems="center" sx={{ mb: 2 }}>
+                <PersonIcon sx={{ fontSize: 48, mr: 2, color: '#ffbf00' }} />
+                <Typography variant="h4" component="div" sx={{ fontWeight: 600, color: '#000000' }}>
                   {userCount} Users
                 </Typography>
               </Box>
             </CardContent>
-            <CardActions>
+            <CardActions sx={{ p: 3, pt: 0, justifyContent: 'space-between' }}>
               <Button 
                 component={RouterLink} 
                 to="/users" 
-                size="small" 
                 startIcon={<PersonIcon />}
+                sx={{ px: 2, py: 0.8, fontSize: '0.9rem' }}
               >
                 View All Users
               </Button>
               <Button 
                 component={RouterLink} 
                 to="/users/new" 
-                size="small" 
+                variant="contained"
+                color="secondary"
                 startIcon={<AddIcon />}
+                sx={{ px: 2, py: 0.8, fontSize: '0.9rem', fontWeight: 600 }}
               >
                 Add User
               </Button>
@@ -131,29 +143,31 @@ function Dashboard() {
         </Grid>
         
         <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Box display="flex" alignItems="center">
-                <AssignmentIcon sx={{ fontSize: 40, mr: 2, color: 'primary.main' }} />
-                <Typography variant="h5" component="div">
+          <Card sx={{ minHeight: '200px', display: 'flex', flexDirection: 'column' }}>
+            <CardContent sx={{ flex: 1, p: 3 }}>
+              <Box display="flex" alignItems="center" sx={{ mb: 2 }}>
+                <AssignmentIcon sx={{ fontSize: 48, mr: 2, color: '#ffbf00' }} />
+                <Typography variant="h4" component="div" sx={{ fontWeight: 600, color: '#000000' }}>
                   {taskCount} Tasks
                 </Typography>
               </Box>
             </CardContent>
-            <CardActions>
+            <CardActions sx={{ p: 3, pt: 0, justifyContent: 'space-between' }}>
               <Button 
                 component={RouterLink} 
                 to="/tasks" 
-                size="small" 
                 startIcon={<AssignmentIcon />}
+                sx={{ px: 2, py: 0.8, fontSize: '0.9rem' }}
               >
                 View All Tasks
               </Button>
               <Button 
                 component={RouterLink} 
                 to="/tasks/new" 
-                size="small" 
+                variant="contained"
+                color="secondary"
                 startIcon={<AddIcon />}
+                sx={{ px: 2, py: 0.8, fontSize: '0.9rem', fontWeight: 600 }}
               >
                 Add Task
               </Button>
@@ -163,11 +177,11 @@ function Dashboard() {
       </Grid>
       
       {/* Recent Tasks */}
-      <Paper sx={{ mt: 3, p: 2 }}>
-        <Typography variant="h6" gutterBottom>
+      <Paper sx={{ mt: 4, p: 3, minHeight: '300px' }}>
+        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, color: '#000000', mb: 3 }}>
           Recent Tasks
         </Typography>
-        <Divider sx={{ mb: 2 }} />
+        <Divider sx={{ mb: 3, borderColor: '#ffbf00', borderWidth: 1 }} />
         
         {recentTasks.length > 0 ? (
           <List>
@@ -205,6 +219,7 @@ function Dashboard() {
                     to={`/tasks/edit/${task.id}`} 
                     size="small" 
                     variant="outlined"
+                    color="secondary"
                   >
                     View
                   </Button>
@@ -214,8 +229,8 @@ function Dashboard() {
             ))}
           </List>
         ) : (
-          <Box sx={{ p: 2, textAlign: 'center' }}>
-            <Typography variant="body1">No tasks found</Typography>
+          <Box sx={{ p: 4, textAlign: 'center' }}>
+            <Typography variant="h6" sx={{ color: '#49453f' }}>No tasks found</Typography>
           </Box>
         )}
       </Paper>

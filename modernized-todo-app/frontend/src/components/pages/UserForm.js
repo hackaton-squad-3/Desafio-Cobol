@@ -165,7 +165,17 @@ function UserForm() {
 
   return (
     <Box sx={{ mt: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom>
+      <Typography 
+        variant="h4" 
+        component="h1" 
+        gutterBottom
+        sx={{ 
+          borderBottom: '3px solid #ffbf00', 
+          paddingBottom: 2, 
+          marginBottom: 3,
+          fontWeight: 600 
+        }}
+      >
         {isEditMode ? 'Edit User' : 'Create User'}
       </Typography>
       
@@ -229,7 +239,7 @@ function UserForm() {
                 <Button
                   type="submit"
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   disabled={saving}
                 >
                   {saving ? 'Saving...' : isEditMode ? 'Update' : 'Create'}

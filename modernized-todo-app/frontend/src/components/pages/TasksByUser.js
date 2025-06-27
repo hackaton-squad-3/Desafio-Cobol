@@ -70,15 +70,29 @@ const TasksByUser = () => {
   if (loading) return <Typography>Loading...</Typography>;
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Typography variant="h4" component="h1" sx={{ mb: 3 }}>
-        Tasks por Usuário
-      </Typography>
+    <Container maxWidth="lg" sx={{ mt: 2, mb: 4 }}>
+      <Box sx={{ mb: 4 }}>
+        <Typography 
+          variant="h4" 
+          component="h1" 
+          sx={{ 
+            borderBottom: '3px solid #ffbf00', 
+            paddingBottom: 2, 
+            fontWeight: 600,
+            mb: 2
+          }}
+        >
+          Tasks by User
+        </Typography>
+        <Typography variant="body1" sx={{ color: '#49453f' }}>
+          View all tasks organized by assigned users
+        </Typography>
+      </Box>
 
       {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
 
       {userTasks.length === 0 ? (
-        <Alert severity="info">Nenhuma task encontrada</Alert>
+        <Alert severity="info" sx={{ mt: 2 }}>No tasks found</Alert>
       ) : (
         userTasks.map((userData, index) => (
           <Accordion key={userData.user.id} sx={{ mb: 2 }}>
@@ -100,7 +114,7 @@ const TasksByUser = () => {
             <AccordionDetails>
               {userData.tasks.length === 0 ? (
                 <Typography color="text.secondary">
-                  Nenhuma task atribuída a este usuário
+                  No tasks assigned to this user
                 </Typography>
               ) : (
                 <TableContainer component={Paper}>
