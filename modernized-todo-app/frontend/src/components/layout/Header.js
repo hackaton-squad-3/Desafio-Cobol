@@ -62,6 +62,7 @@ function Header() {
             <MenuItem onClick={() => handleMenuItemClick('/')}>Dashboard</MenuItem>
             <MenuItem onClick={() => handleMenuItemClick('/users')}>Users</MenuItem>
             <MenuItem onClick={() => handleMenuItemClick('/tasks')}>Tasks</MenuItem>
+            <MenuItem onClick={() => handleMenuItemClick('/tasks/by-user')}>Tasks por Usuário</MenuItem>
           </Menu>
           
           <TaskIcon sx={{ mr: 1 }} />
@@ -84,6 +85,13 @@ function Header() {
             to="/tasks"
           >
             Tasks
+          </Button>
+          <Button 
+            color="inherit" 
+            component={RouterLink} 
+            to="/tasks/by-user"
+          >
+            Tasks por Usuário
           </Button>
         </Toolbar>
       </AppBar>
