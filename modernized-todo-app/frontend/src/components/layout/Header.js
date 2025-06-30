@@ -68,7 +68,7 @@ function Header() {
           <TaskIcon sx={{ mr: 1, color: '#fc8001' }} />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <RouterLink to="/" style={{ color: '#ffbf00', textDecoration: 'none', fontWeight: 600 }}>
-              Todo Application
+              DoIT Compass
             </RouterLink>
           </Typography>
           
