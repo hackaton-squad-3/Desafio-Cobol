@@ -33,14 +33,21 @@ public class TaskService {
 
     @Transactional(readOnly = true)
     public List<Task> getTasksByAssignee(Long userId) {
-        User assignee = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
-        return taskRepository.findByAssignee(assignee);
+        Optional<User> assignee = userRepository.findById(userId);
+        if (assignee.isEmpty()) {
+            return List.of();
+        }
+        return taskRepository.findByAssignee(assignee.get());
     }
 
     @Transactional(readOnly = true)
     public List<Task> getTasksByTag(String tag) {
         return taskRepository.findByTagsContaining(tag);
+    }
+
+    @Transactional(readOnly = true)
+    public List<User> getAllUsersWithTasks() {
+        return userRepository.findAll();
     }
 
     @Transactional
@@ -124,7 +131,7 @@ public class TaskService {
 
         // Check if end date is in the future
         if (task.getEndDate().isBefore(LocalDate.now())) {
-            throw new ValidationException("End date must be in the future");
+            throw new ValidationException("Please enter a valid date from today onwards");
         }
 
         if (task.getCreator() == null) {

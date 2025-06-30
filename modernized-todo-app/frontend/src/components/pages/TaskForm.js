@@ -89,7 +89,8 @@ const TaskForm = () => {
       }
       navigate('/tasks');
     } catch (err) {
-      setError('Failed to save task');
+      const errorMessage = err.response?.data?.error || 'Failed to save task';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -98,7 +99,17 @@ const TaskForm = () => {
   return (
     <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
       <Paper elevation={3} sx={{ p: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Typography 
+          variant="h4" 
+          component="h1" 
+          gutterBottom
+          sx={{ 
+            borderBottom: '3px solid #ffbf00', 
+            paddingBottom: 2, 
+            marginBottom: 3,
+            fontWeight: 600 
+          }}
+        >
           {isEdit ? 'Edit Task' : 'Create New Task'}
         </Typography>
 
@@ -216,6 +227,7 @@ const TaskForm = () => {
             <Button
               type="submit"
               variant="contained"
+              color="secondary"
               disabled={loading}
             >
               {loading ? 'Saving...' : (isEdit ? 'Update Task' : 'Create Task')}

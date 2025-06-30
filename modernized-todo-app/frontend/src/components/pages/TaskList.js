@@ -13,7 +13,8 @@ import {
   Paper,
   Chip,
   IconButton,
-  Alert
+  Alert,
+  Box
 } from '@mui/material';
 import { Edit, Delete, Add } from '@mui/icons-material';
 import { taskService } from '../../services/taskService';
@@ -79,20 +80,38 @@ const TaskList = () => {
   if (loading) return <Typography>Loading...</Typography>;
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <Typography variant="h4" component="h1">
-          Tasks
-        </Typography>
-        <Button
-          variant="contained"
-          startIcon={<Add />}
-          component={Link}
-          to="/tasks/new"
-        >
-          Add Task
-        </Button>
-      </div>
+    <Container maxWidth="lg" sx={{ mt: 2, mb: 4 }}>
+      <Box sx={{ mb: 4 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3 }}>
+          <Box>
+            <Typography 
+              variant="h4" 
+              component="h1"
+              sx={{ 
+                borderBottom: '3px solid #ffbf00', 
+                paddingBottom: 2, 
+                fontWeight: 600,
+                mb: 2
+              }}
+            >
+              Tasks
+            </Typography>
+            <Typography variant="body1" sx={{ color: '#49453f' }}>
+              Manage and track all system tasks
+            </Typography>
+          </Box>
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<Add />}
+            component={Link}
+            to="/tasks/new"
+            sx={{ px: 3, py: 1, fontSize: '1rem', fontWeight: 600, ml: 2 }}
+          >
+            Add Task
+          </Button>
+        </Box>
+      </Box>
 
       {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
 
@@ -132,7 +151,7 @@ const TaskList = () => {
                   <IconButton
                     component={Link}
                     to={`/tasks/edit/${task.id}`}
-                    color="primary"
+                    color="secondary"
                   >
                     <Edit />
                   </IconButton>

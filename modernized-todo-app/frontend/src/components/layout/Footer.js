@@ -22,17 +22,16 @@ function Footer() {
     <Box
       component="footer"
       sx={{
-        py: 3,
+        py: 4,
         px: 2,
-        mt: 'auto',
-        backgroundColor: (theme) =>
-          theme.palette.mode === 'light'
-            ? theme.palette.grey[200]
-            : theme.palette.grey[800],
+        mt: 4,
+        backgroundColor: '#000000',
+        color: '#ffffff',
+        borderTop: '3px solid #ffbf00',
       }}
     >
-      <Container maxWidth="sm">
-        <Typography variant="body1" align="center">
+      <Container maxWidth="lg">
+        <Typography variant="body1" align="center" sx={{ mb: 1, fontWeight: 500 }}>
           Modernized Todo Application (COBOL to Java/React)
         </Typography>
         <Copyright />

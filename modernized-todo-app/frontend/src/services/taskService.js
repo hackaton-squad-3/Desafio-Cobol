@@ -125,6 +125,20 @@ const taskService = {
       console.error(`Error deleting task ${id}:`, error);
       throw error;
     }
+  },
+
+  /**
+   * Get tasks grouped by users
+   * @returns {Promise} Promise with tasks grouped by users
+   */
+  getTasksByAllUsers: async () => {
+    try {
+      const response = await axiosInstance.get(`${API_URL}/by-user`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching tasks by users:', error);
+      throw error;
+    }
   }
 };
 

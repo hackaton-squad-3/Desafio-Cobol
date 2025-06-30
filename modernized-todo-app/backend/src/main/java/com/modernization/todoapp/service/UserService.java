@@ -31,6 +31,18 @@ public class UserService {
     @Transactional
     public User createUser(User user) {
         validateUser(user);
+        
+        // Check if user already exists
+        List<User> existingUsers = userRepository.findAll();
+        boolean userExists = existingUsers.stream()
+            .anyMatch(u -> u.getFirstName().equalsIgnoreCase(user.getFirstName()) 
+                        && u.getLastName().equalsIgnoreCase(user.getLastName())
+                        && u.getBirthDate().equals(user.getBirthDate()));
+        
+        if (userExists) {
+            throw new ValidationException("User already registered");
+        }
+        
         return userRepository.save(user);
     }
 
@@ -67,11 +79,14 @@ public class UserService {
             throw new ValidationException("Birth date must not be null");
         }
 
-        // Check if user is at least 18 years old
+        // Check if user is between 18 and 100 years old
         LocalDate now = LocalDate.now();
         int age = Period.between(user.getBirthDate(), now).getYears();
         if (age < 18) {
             throw new ValidationException("User must be at least 18 years old");
+        }
+        if (age > 100) {
+            throw new ValidationException("User must be at most 100 years old");
         }
     }
 }
