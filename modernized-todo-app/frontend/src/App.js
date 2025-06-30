@@ -14,6 +14,8 @@ import UserForm from './components/pages/UserForm';
 import TaskList from './components/pages/TaskList';
 import TaskForm from './components/pages/TaskForm';
 import TasksByUser from './components/pages/TasksByUser';
+import TasksByTag from './components/pages/TasksByTag';
+import TaskSearch from './components/pages/TaskSearch';
 import NotFound from './components/pages/NotFound';
 
 const theme = createTheme({
@@ -166,6 +168,8 @@ function App() {
               <Route path="/tasks/new" element={<TaskForm />} />
               <Route path="/tasks/edit/:id" element={<TaskForm />} />
               <Route path="/tasks/by-user" element={<TasksByUser />} />
+              <Route path="/tasks/tag/:tag" element={<TasksByTag />} />
+              <Route path="/tasks/search" element={<TaskSearch />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
