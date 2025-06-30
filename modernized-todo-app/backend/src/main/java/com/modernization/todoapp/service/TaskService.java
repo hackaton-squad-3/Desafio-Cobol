@@ -92,6 +92,10 @@ public class TaskService {
             task.setAssignee(taskDetails.getAssignee());
         }
 
+        if (taskDetails.getCreator() != null) {
+            task.setCreator(taskDetails.getCreator());
+        }
+
         task.setUpdateDateTime(LocalDateTime.now());
         validateTask(task);
         

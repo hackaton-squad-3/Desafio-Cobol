@@ -54,7 +54,11 @@ const TaskForm = () => {
   const loadTask = async () => {
     try {
       const data = await taskService.getTaskById(id);
-      setTask(data);
+      setTask({
+        ...data,
+        creatorId: data.creator?.id || '',
+        assigneeId: data.assignee?.id || ''
+      });
     } catch (err) {
       setError('Failed to load task');
     }
