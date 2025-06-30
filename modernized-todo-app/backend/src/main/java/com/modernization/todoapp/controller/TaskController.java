@@ -1,6 +1,7 @@
 package com.modernization.todoapp.controller;
 
 import com.modernization.todoapp.model.Task;
+import com.modernization.todoapp.model.User;
 import com.modernization.todoapp.service.TaskService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,13 +48,35 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getTasksByTag(tag));
     }
 
+    @GetMapping("/by-user")
+    public ResponseEntity<List<Map<String, Object>>> getTasksByAllUsers() {
+        List<User> users = taskService.getAllUsersWithTasks();
+        List<Map<String, Object>> result = new ArrayList<>();
+        
+        for (User user : users) {
+            List<Task> userTasks = taskService.getTasksByAssignee(user.getId());
+            Map<String, Object> userData = new HashMap<>();
+            userData.put("user", user);
+            userData.put("tasks", userTasks);
+            result.add(userData);
+        }
+        
+        return ResponseEntity.ok(result);
+    }
+
     @PostMapping
-    public ResponseEntity<Task> createTask(@Valid @RequestBody Task task) {
+    public ResponseEntity<?> createTask(@Valid @RequestBody Task task) {
         try {
             Task createdTask = taskService.createTask(task);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdTask);
+        } catch (jakarta.validation.ValidationException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            Map<String, String> error = new HashMap<>();
+            error.put("error", "Failed to create task");
+            return ResponseEntity.badRequest().body(error);
         }
     }
 

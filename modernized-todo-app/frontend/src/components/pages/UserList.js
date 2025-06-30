@@ -108,20 +108,37 @@ function UserList() {
   }
 
   return (
-    <Box sx={{ mt: 4 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-        <Typography variant="h4" component="h1">
-          Users
-        </Typography>
-        <Button 
-          variant="contained" 
-          color="primary" 
-          startIcon={<AddIcon />} 
-          component={RouterLink} 
-          to="/users/new"
-        >
-          Add User
-        </Button>
+    <Box sx={{ mt: 2, maxWidth: '1200px', mx: 'auto', px: 2 }}>
+      <Box sx={{ mb: 4 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3 }}>
+          <Box>
+            <Typography 
+              variant="h4" 
+              component="h1"
+              sx={{ 
+                borderBottom: '3px solid #ffbf00', 
+                paddingBottom: 2, 
+                fontWeight: 600,
+                mb: 2
+              }}
+            >
+              Users
+            </Typography>
+            <Typography variant="body1" sx={{ color: '#49453f' }}>
+              Manage system users and their information
+            </Typography>
+          </Box>
+          <Button 
+            variant="contained" 
+            color="secondary" 
+            startIcon={<AddIcon />} 
+            component={RouterLink} 
+            to="/users/new"
+            sx={{ px: 3, py: 1, fontSize: '1rem', fontWeight: 600, ml: 2 }}
+          >
+            Add User
+          </Button>
+        </Box>
       </Box>
 
       <TableContainer component={Paper}>
@@ -152,7 +169,7 @@ function UserList() {
                       <IconButton 
                         component={RouterLink} 
                         to={`/users/edit/${user.id}`}
-                        color="primary"
+                        color="secondary"
                       >
                         <EditIcon />
                       </IconButton>
@@ -170,8 +187,10 @@ function UserList() {
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={6} align="center">
-                  No users found
+                <TableCell colSpan={6} align="center" sx={{ py: 4 }}>
+                  <Typography variant="h6" sx={{ color: '#49453f' }}>
+                    No users found
+                  </Typography>
                 </TableCell>
               </TableRow>
             )}
