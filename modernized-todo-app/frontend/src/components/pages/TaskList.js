@@ -14,15 +14,19 @@ import {
   Chip,
   IconButton,
   Alert,
-  Box
+  Box,
+  TextField,
+  InputAdornment
 } from '@mui/material';
-import { Edit, Delete, Add } from '@mui/icons-material';
+import { Edit, Delete, Add, Search, Clear } from '@mui/icons-material';
 import { taskService } from '../../services/taskService';
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [searchTag, setSearchTag] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     loadTasks();
@@ -36,6 +40,38 @@ const TaskList = () => {
       setError('Failed to load tasks');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleSearchByTag = async () => {
+    if (!searchTag.trim()) {
+      loadTasks();
+      setIsSearching(false);
+      return;
+    }
+    
+    setLoading(true);
+    setError('');
+    try {
+      const data = await taskService.getTasksByTag(searchTag.trim());
+      setTasks(data);
+      setIsSearching(true);
+    } catch (err) {
+      setError('Failed to search tasks by tag');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleClearSearch = () => {
+    setSearchTag('');
+    setIsSearching(false);
+    loadTasks();
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearchByTag();
     }
   };
 
@@ -94,7 +130,7 @@ const TaskList = () => {
                 mb: 2
               }}
             >
-              Tasks
+              Tasks {isSearching && `(filtered by tag: "${searchTag}")`}
             </Typography>
             <Typography variant="body1" sx={{ color: '#49453f' }}>
               Manage and track all system tasks
@@ -109,6 +145,56 @@ const TaskList = () => {
             sx={{ px: 3, py: 1, fontSize: '1rem', fontWeight: 600, ml: 2 }}
           >
             Add Task
+          </Button>
+        </Box>
+        
+        <Box sx={{ mb: 3 }}>
+          <TextField
+            fullWidth
+            variant="outlined"
+            placeholder="Search tasks by tag..."
+            value={searchTag}
+            onChange={(e) => setSearchTag(e.target.value)}
+            onKeyPress={handleKeyPress}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Search />
+                </InputAdornment>
+              ),
+              endAdornment: searchTag && (
+                <InputAdornment position="end">
+                  <IconButton onClick={handleClearSearch} size="small">
+                    <Clear />
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
+            sx={{ maxWidth: 400 }}
+          />
+          <Button
+            variant="contained"
+            onClick={handleSearchByTag}
+            sx={{ ml: 2, height: '56px' }}
+          >
+            Search
+          </Button>
+          {isSearching && (
+            <Button
+              variant="outlined"
+              onClick={handleClearSearch}
+              sx={{ ml: 1, height: '56px' }}
+            >
+              Show All
+            </Button>
+          )}
+          <Button
+            variant="outlined"
+            component={Link}
+            to="/tasks/search"
+            sx={{ ml: 1, height: '56px' }}
+          >
+            Advanced Search
           </Button>
         </Box>
       </Box>
@@ -146,7 +232,23 @@ const TaskList = () => {
                     size="small"
                   />
                 </TableCell>
-                <TableCell>{task.tags}</TableCell>
+                <TableCell>
+                  {task.tags ? (
+                    task.tags.split(',').map((tag, index) => (
+                      <Chip
+                        key={index}
+                        label={tag.trim()}
+                        size="small"
+                        clickable
+                        component={Link}
+                        to={`/tasks/tag/${encodeURIComponent(tag.trim())}`}
+                        sx={{ mr: 0.5, mb: 0.5 }}
+                      />
+                    ))
+                  ) : (
+                    '-'
+                  )}
+                </TableCell>
                 <TableCell>
                   <IconButton
                     component={Link}
